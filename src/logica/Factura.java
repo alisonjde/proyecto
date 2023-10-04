@@ -14,6 +14,7 @@ public class Factura {
 	private int valorTotal;
 	private Cajero cajero;
 	private ArrayList<FacturaPedido> facturaPedidos;
+	public Object tipoPedido;
 	
 	public int getNumero() {
 		return numero;

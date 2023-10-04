@@ -97,7 +97,7 @@ public class Restaurante {
 	public void imprimirFacturas() {
 		for(Factura factura : this.facturas) {
 			System.out.println("-------");
-			System.out.println(factura.getNumero() + " FECHA: " + factura.getFecha() + "\n" +  " VALOR TOTAL: "+ factura.getValorTotal() + "\n" + "\n" + " NOMBRE CAJERO: "+ factura.getCajero().getNombre());
+			System.out.println(factura.getNumero() + " FECHA: " + factura.getFecha()+ " VALOR TOTAL: "+ factura.getValorTotal() + "\n" + " NOMBRE CAJERO: "+ factura.getCajero().getNombre());
 			for(FacturaPedido facturaPedido : factura.getFacturaPedidos()) {
 				System.out.println(" PEDIDO: " +facturaPedido.getPedido().getNombrep()+ "\n"  + " CANTIDAD: " + facturaPedido.getCantidad() + "\n" + " PRECIO UND: " + facturaPedido.getPrecio());
 			}
