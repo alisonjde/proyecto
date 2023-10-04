@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import logica.TipoPedido;
-import logica.Ingredientes;
 @SuppressWarnings("unused")
 public class Factura {
 	
@@ -14,7 +13,7 @@ public class Factura {
 	private int valorTotal;
 	private Cajero cajero;
 	private ArrayList<FacturaPedido> facturaPedidos;
-	public Object tipoPedido;
+	
 	
 	public int getNumero() {
 		return numero;
@@ -50,7 +49,7 @@ public class Factura {
 	public ArrayList<FacturaPedido> getFacturaPedidos() {
 		return facturaPedidos;
 	}
-	public void setFacturaProductos(ArrayList<FacturaPedido> facturaPedidos) {
+	public void setFacturaPedidos(ArrayList<FacturaPedido> facturaPedidos) {
 		this.facturaPedidos = facturaPedidos;
 	}
 	public Factura(int numero, Date fecha, Cajero cajero) {
@@ -71,10 +70,7 @@ public class Factura {
 		FacturaPedido facturaPedido = new FacturaPedido(cantidad, pedido.getPrecioVenta(), pedido);
 		this.facturaPedidos.add(facturaPedido);		
 	}
-	public void adicionarIngredientes (FacturaPedido ingrediente, int p, int c, int q) {
-		Ingredientes ingredientes = new  Ingredientes ();
-		this.facturaPedidos.add(ingrediente);
-	}
+
 }
 
 

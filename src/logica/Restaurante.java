@@ -11,7 +11,7 @@ public class Restaurante {
 	private ArrayList<TipoPedido> tipoPedidos;
 	private ArrayList<Cajero> cajeros;
 	private ArrayList<Factura> facturas;
-	
+	private ArrayList<Ingrediente> ingredientes;
 	
 	public Restaurante() {
 		this.tipoPedidos = new ArrayList<TipoPedido>();
@@ -31,6 +31,12 @@ public class Restaurante {
 		}
 		
 	}
+	public void ingresarIngrediente(String ingrediente, int precio){
+		Ingrediente ingrediente = new Ingrediente(ingrediente, precio)
+		this. ingredientes.add(ingrediente);
+	}
+	
+	
 
 	private TipoPedido buscarTipoPedido(int numeroespecialidadTipoPedido) {
 		for(TipoPedido tipoPedido : this.tipoPedidos) {
@@ -56,8 +62,19 @@ public class Restaurante {
 		for(String linea : lineas) {
 			String datos[] = linea.split(";");
 			this.ingresarPedido(Integer.parseInt(datos[0]), Integer.parseInt(datos[1]), datos[2], Integer.parseInt(datos[3]));
+		}
+		lineas = Archivo.leerArchivo("ingredientes.dat");
+		for(String linea : lineas) {
+			String datos[] = linea.split(";");
+			this.ingresarIngrediente((datos[0]),Integer.parseInt(datos[1]));
 	}
+	private void ingresarIngrediente(String ingrediente, int precio) {
+		Ingrediente ingrediente = new Ingrediente(ingrediente,precio);
+		this.ingresarIngredientes.add(ingrediente);
 	}
+		
+	}
+
 	public void ingresarCajero(int id, String nombre, String apellido) {
 		Cajero cajero = new Cajero(id, nombre, apellido);
 		this.cajeros.add(cajero);

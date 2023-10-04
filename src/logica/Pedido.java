@@ -4,6 +4,7 @@ public class Pedido {
 	private int numerodeeleccion;
 	private String nombrep;
 	private int precioVenta;
+	
 	public int getNumeroDeEleccion() {
 		return numerodeeleccion;
 	}
