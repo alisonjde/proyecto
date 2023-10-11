@@ -64,7 +64,7 @@ public class Factura {
 			total += facturaPedido.getPrecio() * facturaPedido.getCantidad();
 		}
 		this.valorTotal = total;
-
+		 // + modificar pedido
 	}
 	public void adicionarPedido(Pedido pedido, int cantidad) {
 		FacturaPedido facturaPedido = new FacturaPedido(cantidad, pedido.getPrecioVenta(), pedido);

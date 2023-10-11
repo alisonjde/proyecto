@@ -31,10 +31,7 @@ public class Restaurante {
 		}
 		
 	}
-	public void ingresarIngrediente(String ingrediente, int precio){
-		Ingrediente ingrediente = new Ingrediente(ingrediente, precio)
-		this. ingredientes.add(ingrediente);
-	}
+	
 	
 	
 
@@ -63,15 +60,9 @@ public class Restaurante {
 			String datos[] = linea.split(";");
 			this.ingresarPedido(Integer.parseInt(datos[0]), Integer.parseInt(datos[1]), datos[2], Integer.parseInt(datos[3]));
 		}
-		lineas = Archivo.leerArchivo("ingredientes.dat");
-		for(String linea : lineas) {
-			String datos[] = linea.split(";");
-			this.ingresarIngrediente((datos[0]),Integer.parseInt(datos[1]));
-	}
-	private void ingresarIngrediente(String ingrediente, int precio) {
-		Ingrediente ingrediente = new Ingrediente(ingrediente,precio);
-		this.ingresarIngredientes.add(ingrediente);
-	}
+
+		
+		
 		
 	}
 
@@ -119,7 +110,7 @@ public class Restaurante {
 				System.out.println(" PEDIDO: " +facturaPedido.getPedido().getNombrep()+ "\n"  + " CANTIDAD: " + facturaPedido.getCantidad() + "\n" + " PRECIO UND: " + facturaPedido.getPrecio());
 			}
 		}
-		
+		// a setprecio vamos a pasarle el entero que sacamos de modificar pedido 
 	}
 	
 	public void imprimirPedidos() {
