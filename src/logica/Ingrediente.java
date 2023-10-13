@@ -4,24 +4,32 @@ import java.util.ArrayList;
 
 @SuppressWarnings("unused")
 public class Ingrediente {
-	private String ingrediente;
-	private int precio;
+	
+	private int numeroingrediente;
+	private String nombreingrediente;
+	private int precioingrediente;
 	
 	
-	public String getIngrediente() {
-		return ingrediente;
+	public int getNumeroingrediente() {
+		return numeroingrediente;
 	}
-	public void setIngrediente(String ingrediente) {
-		this.ingrediente = ingrediente;
+	public void setNumeroingrediente(int numeroingrediente) {
+		this.numeroingrediente = numeroingrediente;
+	}
+	public String getNombreingrediente() {
+		return nombreingrediente;
+	}
+	public void setNombreingrediente(String nombreingrediente) {
+		this.nombreingrediente = nombreingrediente;
+	}
+	public int getPrecioingrediente() {
+		return precioingrediente;
+	}
+	public void setPrecioingrediente(int precioingrediente) {
+		this.precioingrediente = precioingrediente;
 	}
 	
 	
-	public int getPrecio() {
-		return precio;
-	}
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
 }
 
 

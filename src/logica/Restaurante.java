@@ -9,6 +9,7 @@ import java.util.Scanner;
 @SuppressWarnings("unused")
 public class Restaurante {
 
+	private ArrayList<Combo> combos;
 	private ArrayList<Cajero> cajeros;
 	private ArrayList<Factura> facturas;
 	private ArrayList<Ingrediente> ingredientes;
@@ -36,16 +37,50 @@ public class Restaurante {
 			String datos[] = linea.split(";");
 			this.ingresarCajero(Integer.parseInt(datos[0]), datos[1], datos[2]);
 		}		
-		lineas = Archivo.leerArchivo("pedido.dat");
+		lineas = Archivo.leerArchivo("producto.dat");
 		for(String linea : lineas) {
 			String datos[] = linea.split(";");
-			this.ingresarProducto(Integer.parseInt(datos[0]), Integer.parseInt(datos[1]), datos[2], Integer.parseInt(datos[3]));
+			this.ingresarProducto(Integer.parseInt(datos[0]),datos[1],Integer.parseInt(datos[2]));
 		}
+		lineas = Archivo.leerArchivo("combo.dat");
+		for(String linea : lineas) {
+			String datos[] = linea.split(";");
+			this.ingresarCombo(Integer.parseInt(datos[0]),datos[1],Integer.parseInt(datos[2]),datos[3],datos[4],datos[5]);
+		}
+	
+	}
 
-		
-		
+	private void ingresarCombo(int numerocombo , String nombrecombo , int preciocombo, String producto1, String producto2,String producto3){
+		// TODO Auto-generated method stub
 		
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+	private void ingresarProducto(int numerodeelccion, String nombrep, int precioVenta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
 
 	public void ingresarCajero(int id, String nombre, String apellido) {
 		Cajero cajero = new Cajero(id, nombre, apellido);
