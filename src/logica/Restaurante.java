@@ -19,11 +19,6 @@ public class Restaurante {
 	}
 
 
-	public void ingresarProducto(int numeroespecialidadTipoProducto, int numerodeeleccion, String nombre,int precioVenta) {
-		TipoPedido tipoPedido = this.buscarTipoPedido(numeroespecialidadTipoProducto);
-		if(tipoPedido != null) {
-			tipoPedido.ingresarPedido(numerodeeleccion, nombre,precioVenta);
-		}
 		
 	
 	
@@ -33,7 +28,7 @@ public class Restaurante {
 
 		
 
-	}
+	
 	public void leerArchivos() {
 		ArrayList<String> lineas;
 		lineas = Archivo.leerArchivo("cajero.dat");
@@ -89,18 +84,6 @@ public class Restaurante {
 		// a setprecio vamos a pasarle el entero que sacamos de modificar pedido 
 	}
 	
-	public void imprimirPro() {
-		for(TipoPedido tipoPedido : this.tipoPedidos) {
-			for(Producto pedido : tipoPedido.getPedidos()) {
-				System.out.println("Tipo: " + tipoPedido.getNombrec());
-				System.out.println("Numero De Eleccion: " + pedido.getNumeroDeEleccion());
-				System.out.println("Nombre: " + pedido.getNombrep());
-				System.out.println("Precio Venta: " + pedido.getPrecioVenta());
-				System.out.println("-----------");
-			}
-		}
-		
-	}
 
 	public void modificarPedido(int numeroespecialidad, int numerodeleccion,int precioVenta) {
 		if (numeroespecialidad == 10) {
