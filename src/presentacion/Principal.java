@@ -36,15 +36,7 @@ private Restaurante restaurante;
 			        + "5. Imprimir Menu\n"
 			        + "6. leer archivos\n");
 			op = sc.nextInt();
-			if(op == 1) {
-				System.out.println("Digite numero de especialidad: ");
-				System.out.println("10 = combo");
-				System.out.println("20 = personalizado\n");
-				int numeroespecialidad = sc.nextInt();
-				System.out.println("Digite numero de eleccion:\n ");
-				String nombre = sc.next();				
-				this.restaurante.ingresarTipoPedido(numeroespecialidad, nombre);
-			}else if(op == 2) {
+			if(op == 2) {
 				System.out.println("Digite id: ");
 				int id = sc.nextInt();
 				System.out.println("Digite nombre: ");
@@ -83,8 +75,6 @@ private Restaurante restaurante;
 					otroProducto = sc.nextInt();
 				}while(otroProducto == 1);
 				this.restaurante.ingresarFactura(idCajero,fecha,productosComprados);
-			}else if(op == 5) {
-				this.restaurante.imprimirPedidos();
 			}else if(op== 6) {
 				this.restaurante.leerArchivos();
 			}

@@ -3,8 +3,6 @@ package logica;
 import java.util.ArrayList;
 import java.util.Date;
 
-import logica.TipoPedido;
-@SuppressWarnings("unused")
 public class Factura {
 	
 	private int numero;
@@ -66,8 +64,8 @@ public class Factura {
 		this.valorTotal = total;
 		 // + modificar pedido
 	}
-	public void adicionarPedido(Pedido pedido, int cantidad) {
-		FacturaPedido facturaPedido = new FacturaPedido(cantidad, pedido.getPrecioVenta(), pedido);
+	public void adicionarPedido(Producto producto, int cantidad) {
+		FacturaPedido facturaPedido = new FacturaPedido(cantidad, producto.getPrecioVenta(), producto);
 		this.facturaPedidos.add(facturaPedido);		
 	}
 
