@@ -29,7 +29,7 @@ private Restaurante restaurante;
 			System.out.println("***HAMBURGUESERIA***\n");
 			System.out.println("Digite una opcion:\n"
 					+ "0. Salir del menu\n"
-					+ "1. Ingresar Tipo Pedido\n"
+					+ "1. Ingresar Tipo Producto\n"
 					+ "2. Ingresar Cajero\n"
 					+ "3. Imprimir Facturas\n"
 					+ "4. Ingresar Factura\n"

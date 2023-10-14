@@ -1,17 +1,9 @@
 package logica;
 
+import java.util.Scanner;
+
 public class Combo {
-	
-	//contenido 
-			// va a haber una funcion que sea imprimir combo y con esa funcion
-			//vamos a retornar los productos a modificar pedido
-			
-			
-			
-			//funcion imprimir factura combo()
-			//imprimir combo y mandar a modificar pedido
-	
-	
+
 	private int numerocombo;
 	private String nombrecombo;
 	private int preciocombo;
@@ -56,5 +48,23 @@ public class Combo {
 		this.producto3 = producto3;
 	}
 	
+	public void modificarCombo() {
+			Scanner sc = new Scanner(System.in);
+		int opc;
+		do {
+		System.out.println("Desea modificar el combo?");
+		System.out.println(" 1. Si");
+		System.out.println(" 2. No");
+		opc = sc.nextInt();
+		
+		if(opc == 1) {
+			
+			
+		}
+		}while(opc != 2);
+		sc.close();
 	
+	}	
 }
+	
+

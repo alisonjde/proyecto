@@ -10,7 +10,7 @@ public class Factura {
 	private Date fecha;
 	private int valorTotal;
 	private Cajero cajero;
-	private ArrayList<FacturaPedido> facturaPedidos;
+	private ArrayList<FacturaProducto> facturaProductos;
 	
 	
 	public int getNumero() {
@@ -44,29 +44,29 @@ public class Factura {
 	public void setCajero(Cajero cajero) {
 		this.cajero = cajero;
 	}
-	public ArrayList<FacturaPedido> getFacturaPedidos() {
-		return facturaPedidos;
+	public ArrayList<FacturaProducto> getFacturaProductos() {
+		return facturaProductos;
 	}
-	public void setFacturaPedidos(ArrayList<FacturaPedido> facturaPedidos) {
-		this.facturaPedidos = facturaPedidos;
+	public void setFacturaProductos(ArrayList<FacturaProducto> facturaProductos) {
+		this.facturaProductos = facturaProductos;
 	}
 	public Factura(int numero, Date fecha, Cajero cajero) {
 		super();
 		this.fecha = fecha;
 		this.cajero = cajero;
-		this.facturaPedidos = new ArrayList<FacturaPedido>();
+		this.facturaProductos = new ArrayList<FacturaProducto>();
 	}
 	public void calcularTotal() {
 		int total = 0;
-		for(FacturaPedido facturaPedido : this.facturaPedidos) {
+		for(FacturaProducto facturaPedido : this.facturaProductos) {
 			total += facturaPedido.getPrecio() * facturaPedido.getCantidad();
 		}
 		this.valorTotal = total;
 		 // + modificar pedido
 	}
 	public void adicionarPedido(Producto producto, int cantidad) {
-		FacturaPedido facturaPedido = new FacturaPedido(cantidad, producto.getPrecioVenta(), producto);
-		this.facturaPedidos.add(facturaPedido);		
+		FacturaProducto facturaPedido = new FacturaProducto(cantidad, producto.getPrecioVenta(), producto);
+		this.facturaProductos.add(facturaPedido);		
 	}
 
 }

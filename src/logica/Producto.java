@@ -35,18 +35,21 @@ public class Producto {
 			this.precioVenta = precioVenta;
 
 		}
+	
+
+
+
+	public void modificarProducto() {
+	
+		//recibe numerodeelccion y numerodeespecialidad
+		//if numeroespecialidad == 10 -> imprima combo -> seleccione el producto a modificar y mande entero
+		//else if (numerodeeleccion >= 21 && <=26 -> entonces mande string y entero
+		
 	}
 
+}
 
 
-	//public void modificarpedido()
-	//recibe numerodeelccion y numerodeespecialidad
-	//if numeroespecialidad == 10 -> imprima combo -> seleccione el producto a modificar y mande entero
-
-
-
-
-	//else if (numerodeeleccion >= 21 && <=26 -> entonces mande string y entero
 
 
 

@@ -53,6 +53,8 @@ public class Restaurante {
 	private void ingresarCombo(int numerocombo , String nombrecombo , int preciocombo, String producto1, String producto2,String producto3){
 		// TODO Auto-generated method stub
 		
+		
+		
 	}
 
 
@@ -65,9 +67,13 @@ public class Restaurante {
 
 
 
+	
+	
 
 	private void ingresarProducto(int numerodeelccion, String nombrep, int precioVenta) {
 		// TODO Auto-generated method stub
+		
+		
 		
 	}
 
@@ -82,6 +88,8 @@ public class Restaurante {
 
 
 
+	
+	
 	public void ingresarCajero(int id, String nombre, String apellido) {
 		Cajero cajero = new Cajero(id, nombre, apellido);
 		this.cajeros.add(cajero);
@@ -91,7 +99,7 @@ public class Restaurante {
 		int numero = this.facturas.size() + 1;
 		Factura factura = new Factura(numero, fecha, cajero);
 		for(int[] datos : productosComprados) {
-			Producto producto = this.buscarPedido(datos[0]);
+			Producto producto = this.buscarProducto(datos[0]);
 			factura.adicionarPedido(producto, datos[1]);
 		}
 		factura.calcularTotal();
@@ -99,6 +107,24 @@ public class Restaurante {
 	}
 	
 
+	private Producto buscarProducto(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
 	private Cajero buscarCajero(int idCajero) {
 		for(Cajero cajero : this.cajeros) {
 			if(cajero.getId() == idCajero) {
@@ -112,7 +138,7 @@ public class Restaurante {
 		for(Factura factura : this.facturas) {
 			System.out.println("-------");
 			System.out.println(factura.getNumero() + " FECHA: " + factura.getFecha()+ " VALOR TOTAL: "+ factura.getValorTotal() + "\n" + " NOMBRE CAJERO: "+ factura.getCajero().getNombre());
-			for(FacturaPedido facturaPedido : factura.getFacturaPedidos()) {
+			for(FacturaProducto facturaPedido : factura.getFacturaProductos()) {
 				System.out.println(" PEDIDO: " +facturaPedido.getPedido().getNombrep()+ "\n"  + " CANTIDAD: " + facturaPedido.getCantidad() + "\n" + " PRECIO UND: " + facturaPedido.getPrecio());
 			}
 		}
@@ -120,7 +146,7 @@ public class Restaurante {
 	}
 	
 
-	public void modificarPedido(int numeroespecialidad, int numerodeleccion,int precioVenta) {
+	public void modificarProducto(int numeroespecialidad, int numerodeleccion,int precioVenta) {
 		if (numeroespecialidad == 10) {
 			System.out.println("No se pueden modificar combos, (solo hamburguesas");
 		}
