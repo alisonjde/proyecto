@@ -13,23 +13,16 @@ public class Restaurante {
 	private ArrayList<Cajero> cajeros;
 	private ArrayList<Factura> facturas;
 	private ArrayList<Ingrediente> ingredientes;
+	private ArrayList<Producto> productos;
 	
 	public Restaurante() {
 		this.cajeros = new ArrayList<Cajero>();
 		this.facturas = new ArrayList<Factura>();
+		 this.combos = new ArrayList<Combo>();
+		    this.ingredientes = new ArrayList<Ingrediente>();
+		    this.productos = new ArrayList<Producto>();
 	}
 
-
-		
-	
-	
-	
-	
-
-
-		
-
-	
 	public void leerArchivos() {
 		ArrayList<String> lineas;
 		lineas = Archivo.leerArchivo("cajero.dat");
@@ -37,24 +30,47 @@ public class Restaurante {
 			String datos[] = linea.split(";");
 			this.ingresarCajero(Integer.parseInt(datos[0]), datos[1], datos[2]);
 		}		
-		lineas = Archivo.leerArchivo("producto.dat");
+		lineas = Archivo.leerArchivo("producto");
 		for(String linea : lineas) {
 			String datos[] = linea.split(";");
 			this.ingresarProducto(Integer.parseInt(datos[0]),datos[1],Integer.parseInt(datos[2]));
 		}
-		lineas = Archivo.leerArchivo("combo.dat");
+		lineas = Archivo.leerArchivo("combo");
 		for(String linea : lineas) {
 			String datos[] = linea.split(";");
-			this.ingresarCombo(Integer.parseInt(datos[0]),datos[1],Integer.parseInt(datos[2]),datos[3],datos[4],datos[5]);
+			this.ingresarCombo(Integer.parseInt(datos[0]),datos[1],Integer.parseInt(datos[2]),Integer.parseInt (datos[3]),Integer.parseInt(datos[4]),Integer.parseInt (datos[5]));
 		}
-	
+		lineas = Archivo.leerArchivo("ingrediente");
+		for(String linea : lineas) {
+			String datos[] = linea.split(";");
+			this.ingresarIngrediente(Integer.parseInt(datos[0]),datos[1],Integer.parseInt(datos[2]));
+		
+		}
+		
 	}
 
-	private void ingresarCombo(int numerocombo , String nombrecombo , int preciocombo, String producto1, String producto2,String producto3){
+	private void ingresarIngrediente(int numeroingrediente, String nombreingrediente, int precioingrediente) {
 		// TODO Auto-generated method stub
+		Ingrediente ingrediente = new Ingrediente(numeroingrediente,nombreingrediente, precioingrediente);
+		this.ingredientes.add(ingrediente);
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	private void ingresarCombo(int numerocombo , String nombrecombo , int preciocombo, int producto1, int producto2,int producto3){
 		
-		
-		
+		Combo combo = new Combo(numerocombo,nombrecombo,preciocombo,producto1,producto2,producto3);
+		this.combos.add(combo);	
 	}
 
 
@@ -71,10 +87,9 @@ public class Restaurante {
 	
 
 	private void ingresarProducto(int numerodeelccion, String nombrep, int precioVenta) {
-		// TODO Auto-generated method stub
-		
-		
-		
+	
+		Producto producto = new Producto(numerodeelccion,nombrep,precioVenta);
+		this.productos.add(producto);	
 	}
 
 
@@ -100,18 +115,31 @@ public class Restaurante {
 		Factura factura = new Factura(numero, fecha, cajero);
 		for(int[] datos : productosComprados) {
 			Producto producto = this.buscarProducto(datos[0]);
-			factura.adicionarPedido(producto, datos[1]);
+			Combo combo = this.buscarCombo(datos[0]);
+			factura.adicionarProducto(producto,combo, datos[1]);
+		
 		}
 		factura.calcularTotal();
 		this.facturas.add(factura);
 	}
 	
 
-	private Producto buscarProducto(int i) {
-		// TODO Auto-generated method stub
-		return null;
+	private Producto buscarProducto(int idProducto) {
+	    for (Producto producto : this.productos) {
+	        if (producto.getNumeroDeEleccion() == idProducto) {
+	            return producto; // Producto encontrado
+	        }
+	    }
+	    return null; // Producto no encontrado
 	}
-
+	private Combo buscarCombo(int idCombo) {
+	    for (Combo combo : this.combos) {
+	        if (combo.getNumerocombo() == idCombo) {
+	            return combo; // Producto encontrado
+	        }
+	    }
+	    return null; // Producto no encontrado
+	}
 
 
 
@@ -134,17 +162,15 @@ public class Restaurante {
 		return null;
 	}
 
-	public void imprimirFacturas() {
-		for(Factura factura : this.facturas) {
-			System.out.println("-------");
-			System.out.println(factura.getNumero() + " FECHA: " + factura.getFecha()+ " VALOR TOTAL: "+ factura.getValorTotal() + "\n" + " NOMBRE CAJERO: "+ factura.getCajero().getNombre());
-			for(FacturaProducto facturaPedido : factura.getFacturaProductos()) {
-				System.out.println(" PEDIDO: " +facturaPedido.getPedido().getNombrep()+ "\n"  + " CANTIDAD: " + facturaPedido.getCantidad() + "\n" + " PRECIO UND: " + facturaPedido.getPrecio());
-			}
-		}
-		// a setprecio vamos a pasarle el entero que sacamos de modificar pedido 
+	public void imprimirFacturas(ArrayList<int[]> productosPedidos, ArrayList<int[]> combosPedidos) {
+	    for (Factura factura : this.facturas) {
+	        System.out.println("-------");
+	        System.out.println(factura.getNumero() + " FECHA: " + factura.getFecha() + "\n" + " VALOR TOTAL: " + factura.getValorTotal() + "\n" + " NOMBRE CAJERO: " + factura.getCajero().getNombre());
+	        for (FacturaProducto facturaProducto : factura.getFacturaProductos()) {
+	            System.out.println(" PEDIDO: " + facturaProducto.getProducto().getNombrep() + "\n" + " CANTIDAD: " + facturaProducto.getCantidad() + "\n" + " PRECIO UND: " + facturaProducto.getPrecio());
+	        }
+	    }
 	}
-	
 
 	public void modificarProducto(int numeroespecialidad, int numerodeleccion,int precioVenta) {
 		if (numeroespecialidad == 10) {
@@ -154,4 +180,6 @@ public class Restaurante {
 }
 
 	}
+
+	
 }

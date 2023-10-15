@@ -11,6 +11,7 @@ public class Combo {
 	private int producto2;
 	private int producto3;
 	
+
 	public int getNumerocombo() {
 		return numerocombo;
 	}
@@ -48,6 +49,16 @@ public class Combo {
 		this.producto3 = producto3;
 	}
 	
+	public Combo(int numerocombo, String nombrecombo, int preciocombo, int producto1, int producto2,int producto3) {
+		this.numerocombo = numerocombo;
+		this.nombrecombo = nombrecombo;
+		this.preciocombo = preciocombo;
+		this.producto1 = producto1;
+		this.producto2 = producto2;
+		this.producto3 = producto3;
+		
+	}
+	
 	public void modificarCombo() {
 			Scanner sc = new Scanner(System.in);
 		int opc;
@@ -58,6 +69,7 @@ public class Combo {
 		opc = sc.nextInt();
 		
 		if(opc == 1) {
+			
 			
 			
 		}

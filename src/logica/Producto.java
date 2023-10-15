@@ -38,7 +38,6 @@ public class Producto {
 	
 
 
-
 	public void modificarProducto() {
 	
 		//recibe numerodeelccion y numerodeespecialidad

@@ -25,18 +25,28 @@ private Restaurante restaurante;
 	private void iniciar() {
 		Scanner sc = new Scanner(System.in);
 		int op;
+		 ArrayList<int[]> productosPedidos = new ArrayList<>();
+		 ArrayList<int[]> combosPedidos = new ArrayList<>();
 		do {
 			System.out.println("***HAMBURGUESERIA***\n");
 			System.out.println("Digite una opcion:\n"
 					+ "0. Salir del menu\n"
-					+ "1. Ingresar Tipo Producto\n"
+					+ "1. Ingresar  Producto\n"
 					+ "2. Ingresar Cajero\n"
 					+ "3. Imprimir Facturas\n"
 					+ "4. Ingresar Factura\n"
 			        + "5. Imprimir Menu\n"
 			        + "6. leer archivos\n");
 			op = sc.nextInt();
-			if(op == 2) {
+			if(op == 1) {
+				System.out.println("Digite numero de eleccion: ");
+				int numerodeeleccion = sc.nextInt();
+				System.out.println("Digite nombre: ");
+				String nombrep = sc.next();				
+				System.out.println("Digite precio: ");
+				String precioVenta = sc.next();								
+				this.restaurante.ingresarCajero(numerodeeleccion, nombrep,precioVenta);
+		     }else if(op == 2) {
 				System.out.println("Digite id: ");
 				int id = sc.nextInt();
 				System.out.println("Digite nombre: ");
@@ -45,7 +55,7 @@ private Restaurante restaurante;
 				String apellido = sc.next();								
 				this.restaurante.ingresarCajero(id, nombre, apellido);	
 			}else if(op == 3) {
-					this.restaurante.imprimirFacturas();
+				 this.restaurante.imprimirFacturas(productosPedidos,combosPedidos);
 			}else if(op == 4) {
 				System.out.println("Digite id del Cajero: ");
 				int idCajero = sc.nextInt();
@@ -59,8 +69,10 @@ private Restaurante restaurante;
 					e.printStackTrace();
 				} 
 				int otroProducto;
+				@SuppressWarnings("unused")
 				ArrayList<int[]> productosComprados = new ArrayList<int[]>();
 				do {
+					
 					int datos[] = new int[2];
 					System.out.println("Digite id del pedido: ");
 					int numerodeeleccion = sc.nextInt();
@@ -75,12 +87,13 @@ private Restaurante restaurante;
 					otroProducto = sc.nextInt();
 				}while(otroProducto == 1);
 				this.restaurante.ingresarFactura(idCajero,fecha,productosComprados);
+		        
 			}else if(op== 6) {
 				this.restaurante.leerArchivos();
 			}
 			}while(op != 0);
 			sc.close();
-
+			this.restaurante.imprimirFacturas(productosPedidos, combosPedidos);
   }
 
 }

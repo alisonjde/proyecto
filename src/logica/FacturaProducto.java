@@ -17,20 +17,20 @@ public class FacturaProducto {
 		public int getPrecio() {
 			return precioventa;
 		}
-		public void setPrecio(int precio) {
-			this.precioventa = precio;
+		public void setPrecioVenta(int precioVenta) {
+			this.precioventa = precioVenta;
 		}
-		public Producto getPedido() {
+		public Producto getProducto() {
 			return producto;
 		}
-		public void setPedido(Producto pedido) {
-			this.producto = pedido;
+		public void setProducto(Producto producto) {
+			this.producto = producto;
 		}
-		public FacturaProducto(int cantidad, int precioventa, Producto pedido) {
+		public FacturaProducto(int cantidad,int precioVenta,Producto producto) {
 			super();
 			this.cantidad = cantidad;
-			this.precioventa = precioventa;
-			this.producto = pedido;
+			this.precioventa = precioVenta;
+			this.producto = producto;
 		}
 
 	}

@@ -64,11 +64,14 @@ public class Factura {
 		this.valorTotal = total;
 		 // + modificar pedido
 	}
-	public void adicionarPedido(Producto producto, int cantidad) {
-		FacturaProducto facturaPedido = new FacturaProducto(cantidad, producto.getPrecioVenta(), producto);
-		this.facturaProductos.add(facturaPedido);		
+	public void adicionarProducto(Producto producto, Combo combo, int cantidad) {
+	    if (producto != null) {
+	        FacturaProducto facturaProducto = new FacturaProducto(cantidad, producto.getPrecioVenta(), producto);
+	        this.facturaProductos.add(facturaProducto);
+	    } else {
+	        // Manejar el caso en el que el producto no se encontró
+	        System.out.println("El producto no se encontró.");
+	    }
 	}
 
 }
-
-

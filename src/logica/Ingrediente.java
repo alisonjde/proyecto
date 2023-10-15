@@ -9,7 +9,7 @@ public class Ingrediente {
 	private String nombreingrediente;
 	private int precioingrediente;
 	
-	
+
 	public int getNumeroingrediente() {
 		return numeroingrediente;
 	}
@@ -29,6 +29,12 @@ public class Ingrediente {
 		this.precioingrediente = precioingrediente;
 	}
 	
+	public Ingrediente(int numeroingrediente, String nombreingrediente, int precioingrediente) {
+		this.numeroingrediente = numeroingrediente;
+		this.nombreingrediente = nombreingrediente;
+		this.precioingrediente = precioingrediente;
+		
+	}
 	
 }
 
