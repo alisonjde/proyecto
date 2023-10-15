@@ -1,12 +1,13 @@
 package logica;
 
+
 public class Producto {
 
 		private int numerodeeleccion;
 		private String nombrep;
 		private int precioVenta;
 		
-		public int getNumeroDeEleccion() {
+		 public int getNumeroDeEleccion() {
 			return numerodeeleccion;
 		}
 		public void setNumeroDeEleccion(int numerodeeleccion) {
@@ -40,12 +41,13 @@ public class Producto {
 
 	public void modificarProducto() {
 	
+		
+		
 		//recibe numerodeelccion y numerodeespecialidad
 		//if numeroespecialidad == 10 -> imprima combo -> seleccione el producto a modificar y mande entero
 		//else if (numerodeeleccion >= 21 && <=26 -> entonces mande string y entero
 		
 	}
-
 }
 
 

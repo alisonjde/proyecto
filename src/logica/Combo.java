@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Combo {
@@ -10,8 +11,10 @@ public class Combo {
 	private int producto1;
 	private int producto2;
 	private int producto3;
-	
 
+	
+	
+	
 	public int getNumerocombo() {
 		return numerocombo;
 	}
@@ -76,6 +79,14 @@ public class Combo {
 		}while(opc != 2);
 		sc.close();
 	
+	}
+	public void setProductosCombo(@SuppressWarnings("rawtypes") ArrayList arrayList) {
+		// TODO Auto-generated method stub
+		
+	}
+	public Integer[] getProductosCombo() {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }
 	

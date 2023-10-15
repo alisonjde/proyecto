@@ -16,12 +16,13 @@ private Restaurante restaurante;
 	
 	public Principal() {
 		this.restaurante = new Restaurante();
+
 	}
 
 	public static void main(String[] args) {
 		Principal principal = new Principal();
 		principal.iniciar();
-	}	
+	}
 	private void iniciar() {
 		Scanner sc = new Scanner(System.in);
 		int op;
@@ -36,7 +37,8 @@ private Restaurante restaurante;
 					+ "3. Imprimir Facturas\n"
 					+ "4. Ingresar Factura\n"
 			        + "5. Imprimir Menu\n"
-			        + "6. leer archivos\n");
+			        + "6. leer archivos\n"
+			        + "7. modificar producto\n");
 			op = sc.nextInt();
 			if(op == 1) {
 				System.out.println("Digite numero de eleccion: ");
@@ -55,7 +57,7 @@ private Restaurante restaurante;
 				String apellido = sc.next();								
 				this.restaurante.ingresarCajero(id, nombre, apellido);	
 			}else if(op == 3) {
-				 this.restaurante.imprimirFacturas(productosPedidos,combosPedidos);
+				 this.restaurante.imprimirFacturas(productosPedidos, productosPedidos);
 			}else if(op == 4) {
 				System.out.println("Digite id del Cajero: ");
 				int idCajero = sc.nextInt();
@@ -87,13 +89,18 @@ private Restaurante restaurante;
 					otroProducto = sc.nextInt();
 				}while(otroProducto == 1);
 				this.restaurante.ingresarFactura(idCajero,fecha,productosComprados);
-		        
+			}else if (op == 5) {
+			        this.restaurante.mostrarListaCombos();
+			    
 			}else if(op== 6) {
 				this.restaurante.leerArchivos();
+			}else if(op == 7) {
+				this.restaurante.modificarProducto();
 			}
 			}while(op != 0);
 			sc.close();
 			this.restaurante.imprimirFacturas(productosPedidos, combosPedidos);
   }
+
 
 }
