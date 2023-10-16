@@ -18,7 +18,7 @@
 #     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
 # This output file may be truncated or incomplete.
 #
-#  Out of Memory Error (os_windows.cpp:3617), pid=3420, tid=13660
+#  Out of Memory Error (os_windows.cpp:3617), pid=1304, tid=9884
 #
 # JRE version:  (17.0.8.1+1) (build )
 # Java VM: OpenJDK 64-Bit Server VM (17.0.8.1+1, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
@@ -30,13 +30,13 @@
 Command Line: -Dfile.encoding=UTF-8 --module-path=D:\USUARIO\Music\workspace\proyecto\bin -XX:+ShowCodeDetailsInExceptionMessages -Djdk.module.main=proyecto proyecto/presentacion.Principal
 
 Host: AMD Ryzen 5 5600G with Radeon Graphics         , 12 cores, 13G,  Windows 11 , 64 bit Build 22621 (10.0.22621.1778)
-Time: Sun Oct 15 13:46:53 2023 Hora est. Pacífico, Sudamérica elapsed time: 0.007641 seconds (0d 0h 0m 0s)
+Time: Mon Oct 16 16:27:56 2023 Hora est. Pacífico, Sudamérica elapsed time: 0.016947 seconds (0d 0h 0m 0s)
 
 ---------------  T H R E A D  ---------------
 
-Current thread (0x000001659bc84280):  JavaThread "Unknown thread" [_thread_in_vm, id=13660, stack(0x000000116fe00000,0x000000116ff00000)]
+Current thread (0x000001f5e6293860):  JavaThread "Unknown thread" [_thread_in_vm, id=9884, stack(0x00000099af600000,0x00000099af700000)]
 
-Stack: [0x000000116fe00000,0x000000116ff00000]
+Stack: [0x00000099af600000,0x00000099af700000]
 Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
 V  [jvm.dll+0x678b0a]
 V  [jvm.dll+0x835e84]
@@ -65,22 +65,22 @@ C  [ntdll.dll+0x5a9f8]
 ---------------  P R O C E S S  ---------------
 
 Threads class SMR info:
-_java_thread_list=0x00007ffbb14ea018, length=0, elements={
+_java_thread_list=0x00007ffb2053a018, length=0, elements={
 }
 
 Java Threads: ( => current thread )
 
 Other Threads:
-  0x000001659bce67b0 GCTaskThread "GC Thread#0" [stack: 0x000000116ff00000,0x0000001170000000] [id=7928]
-  0x000001659bcf61c0 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000001170000000,0x0000001170100000] [id=9340]
-  0x000001659bcf6ad0 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000001170100000,0x0000001170200000] [id=2212]
+  0x000001f5e62f5d90 GCTaskThread "GC Thread#0" [stack: 0x00000099af700000,0x00000099af800000] [id=9028]
+  0x000001f5e63053d0 ConcurrentGCThread "G1 Main Marker" [stack: 0x00000099af800000,0x00000099af900000] [id=2612]
+  0x000001f5e63060b0 ConcurrentGCThread "G1 Conc#0" [stack: 0x00000099af900000,0x00000099afa00000] [id=11024]
 
-[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffbb0cbe587]
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffb1fd0e587]
 
 VM state: not at safepoint (not fully initialized)
 
 VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
-[0x000001659bc80040] Heap_lock - owner thread: 0x000001659bc84280
+[0x000001f5e628f660] Heap_lock - owner thread: 0x000001f5e6293860
 
 Heap address: 0x0000000721a00000, size: 3558 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
 
@@ -94,7 +94,7 @@ Heap:
  garbage-first heap   total 0K, used 0K [0x0000000721a00000, 0x0000000800000000)
   region size 2048K, 0 young (0K), 0 survivors (0K)
 
-[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffbb10a2699]
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffb200f2699]
 
 GC Heap History (0 events):
 No events
@@ -122,45 +122,45 @@ No events
 
 
 Dynamic libraries:
-0x00007ff77bb50000 - 0x00007ff77bb5e000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\javaw.exe
-0x00007ffc2f290000 - 0x00007ffc2f4a4000 	C:\WINDOWS\SYSTEM32\ntdll.dll
-0x00007ffc2d740000 - 0x00007ffc2d802000 	C:\WINDOWS\System32\KERNEL32.DLL
-0x00007ffc2c690000 - 0x00007ffc2ca33000 	C:\WINDOWS\System32\KERNELBASE.dll
-0x00007ffc2cb90000 - 0x00007ffc2cca1000 	C:\WINDOWS\System32\ucrtbase.dll
-0x00007ffc1bb90000 - 0x00007ffc1bba7000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\jli.dll
-0x00007ffc1bb70000 - 0x00007ffc1bb89000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\VCRUNTIME140.dll
-0x00007ffc2d9a0000 - 0x00007ffc2db4b000 	C:\WINDOWS\System32\USER32.dll
-0x00007ffc14510000 - 0x00007ffc1479e000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.1635_none_270f70857386168e\COMCTL32.dll
-0x00007ffc2cb60000 - 0x00007ffc2cb86000 	C:\WINDOWS\System32\win32u.dll
-0x00007ffc2d150000 - 0x00007ffc2d1f7000 	C:\WINDOWS\System32\msvcrt.dll
-0x00007ffc2e8f0000 - 0x00007ffc2e919000 	C:\WINDOWS\System32\GDI32.dll
-0x00007ffc2ca40000 - 0x00007ffc2cb59000 	C:\WINDOWS\System32\gdi32full.dll
-0x00007ffc2ce20000 - 0x00007ffc2ceba000 	C:\WINDOWS\System32\msvcp_win.dll
-0x00007ffc2ea40000 - 0x00007ffc2ea71000 	C:\WINDOWS\System32\IMM32.DLL
-0x0000000069d40000 - 0x0000000069d4c000 	D:\360\Total Security\safemon\SafeWrapper.dll
-0x00007ffc2d5b0000 - 0x00007ffc2d65e000 	C:\WINDOWS\System32\ADVAPI32.dll
-0x00007ffc2d810000 - 0x00007ffc2d8b4000 	C:\WINDOWS\System32\sechost.dll
-0x00007ffc2e920000 - 0x00007ffc2ea37000 	C:\WINDOWS\System32\RPCRT4.dll
-0x00007ffbd9f10000 - 0x00007ffbd9fa2000 	D:\360\Total Security\safemon\libzdtp64.dll
-0x00007ffc2db50000 - 0x00007ffc2e34a000 	C:\WINDOWS\System32\SHELL32.dll
-0x00007ffc2d0f0000 - 0x00007ffc2d14e000 	C:\WINDOWS\System32\SHLWAPI.dll
-0x00007ffc2c0a0000 - 0x00007ffc2c0aa000 	C:\WINDOWS\SYSTEM32\VERSION.dll
-0x00007ffc1c000000 - 0x00007ffc1c00c000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\vcruntime140_1.dll
-0x00007ffc149c0000 - 0x00007ffc14a51000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\msvcp140.dll
-0x00007ffbb09d0000 - 0x00007ffbb161c000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\server\jvm.dll
-0x00007ffc2c360000 - 0x00007ffc2c3ad000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
-0x00007ffc23660000 - 0x00007ffc23694000 	C:\WINDOWS\SYSTEM32\WINMM.dll
-0x00007ffc27e20000 - 0x00007ffc27e29000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
-0x00007ffc2e490000 - 0x00007ffc2e501000 	C:\WINDOWS\System32\WS2_32.dll
-0x00007ffc2c290000 - 0x00007ffc2c2a3000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
-0x00007ffc2b670000 - 0x00007ffc2b688000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
-0x00007ffc1fbb0000 - 0x00007ffc1fbba000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\jimage.dll
-0x00007ffc24e60000 - 0x00007ffc2508e000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
-0x00007ffc2d200000 - 0x00007ffc2d589000 	C:\WINDOWS\System32\combase.dll
-0x00007ffc2d8c0000 - 0x00007ffc2d997000 	C:\WINDOWS\System32\OLEAUT32.dll
-0x00007ffc17e10000 - 0x00007ffc17e42000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
-0x00007ffc2cec0000 - 0x00007ffc2cf3b000 	C:\WINDOWS\System32\bcryptPrimitives.dll
-0x00007ffc1f700000 - 0x00007ffc1f725000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\java.dll
+0x00007ff6b7d60000 - 0x00007ff6b7d6e000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\javaw.exe
+0x00007ffb5af70000 - 0x00007ffb5b184000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffb5abc0000 - 0x00007ffb5ac82000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffb585f0000 - 0x00007ffb58993000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffb58c30000 - 0x00007ffb58d41000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffb4b540000 - 0x00007ffb4b559000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\VCRUNTIME140.dll
+0x00007ffb4b5a0000 - 0x00007ffb4b5b7000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\jli.dll
+0x00007ffb59590000 - 0x00007ffb5973b000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffb41370000 - 0x00007ffb415fe000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.1635_none_270f70857386168e\COMCTL32.dll
+0x00007ffb58490000 - 0x00007ffb584b6000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffb5a210000 - 0x00007ffb5a2b7000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffb5ac90000 - 0x00007ffb5acb9000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffb58370000 - 0x00007ffb58489000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffb589a0000 - 0x00007ffb58a3a000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffb5a8b0000 - 0x00007ffb5a8e1000 	C:\WINDOWS\System32\IMM32.DLL
+0x0000000059fc0000 - 0x0000000059fcc000 	D:\360\Total Security\safemon\SafeWrapper.dll
+0x00007ffb5ae80000 - 0x00007ffb5af2e000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffb5ad20000 - 0x00007ffb5adc4000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffb5aaa0000 - 0x00007ffb5abb7000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffafd370000 - 0x00007ffafd402000 	D:\360\Total Security\safemon\libzdtp64.dll
+0x00007ffb59900000 - 0x00007ffb5a0fa000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ffb58d60000 - 0x00007ffb58dbe000 	C:\WINDOWS\System32\SHLWAPI.dll
+0x00007ffb57dc0000 - 0x00007ffb57dca000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffb4b530000 - 0x00007ffb4b53c000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\vcruntime140_1.dll
+0x00007ffb483f0000 - 0x00007ffb48481000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\msvcp140.dll
+0x00007ffb1fa20000 - 0x00007ffb2066c000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\server\jvm.dll
+0x00007ffb4e990000 - 0x00007ffb4e9c4000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffb58040000 - 0x00007ffb5808d000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ffb55650000 - 0x00007ffb55659000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffb5ae00000 - 0x00007ffb5ae71000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffb58020000 - 0x00007ffb58033000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ffb57300000 - 0x00007ffb57318000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffb4b600000 - 0x00007ffb4b60a000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\jimage.dll
+0x00007ffb50ab0000 - 0x00007ffb50cde000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffb58e60000 - 0x00007ffb591e9000 	C:\WINDOWS\System32\combase.dll
+0x00007ffb5a7d0000 - 0x00007ffb5a8a7000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffb44220000 - 0x00007ffb44252000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffb58a40000 - 0x00007ffb58abb000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffb48310000 - 0x00007ffb48335000 	D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\java.dll
 
 dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
 symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.1635_none_270f70857386168e;D:\360\Total Security\safemon;D:\ECLIPSE\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\jre\bin\server
@@ -213,14 +213,14 @@ TEMP=C:\Users\USUARIO\AppData\Local\Temp
 
 OS:
  Windows 11 , 64 bit Build 22621 (10.0.22621.1778)
-OS uptime: 0 days 4:16 hours
+OS uptime: 0 days 3:44 hours
 
 CPU: total 12 (initial active 12) (12 cores per cpu, 2 threads per core) family 25 model 80 stepping 0 microcode 0x0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt
 Processor Information for all 12 processors :
   Max Mhz: 3901, Current Mhz: 3901, Mhz Limit: 3901
 
-Memory: 4k page, system-wide physical 14229M (7732M free)
-TotalPageFile size 14317M (AvailPageFile size 16M)
+Memory: 4k page, system-wide physical 14229M (7656M free)
+TotalPageFile size 14247M (AvailPageFile size 39M)
 current process WorkingSet (physical memory assigned to process): 12M, peak: 12M
 current process commit charge ("private bytes"): 64M, peak: 288M
 

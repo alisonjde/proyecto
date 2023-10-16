@@ -2,11 +2,11 @@ package logica;
 
 public class FacturaProducto {
 
-	
+	 
 		private int cantidad;
 		private int precioventa;
-		
 		private Producto producto;
+		private Combo combo;
 		
 		public int getCantidad() {
 			return cantidad;
@@ -26,12 +26,21 @@ public class FacturaProducto {
 		public void setProducto(Producto producto) {
 			this.producto = producto;
 		}
-		public FacturaProducto(int cantidad,int precioVenta,Producto producto) {
+		public FacturaProducto(int cantidad,int precioVenta,Combo combo,Producto producto) {
 			super();
 			this.cantidad = cantidad;
 			this.precioventa = precioVenta;
 			this.producto = producto;
+			this.combo = combo;
+			
 		}
+		public Combo getCombo() {
+			return combo;
+		}
+		public void setCombo(Combo combo) {
+			this.combo = combo;
+		}
+	
 
 	}
 

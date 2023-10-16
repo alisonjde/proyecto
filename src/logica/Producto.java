@@ -1,8 +1,11 @@
 package logica;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Producto {
-
+	
+    private ArrayList<Ingrediente> ingredientes;
 		private int numerodeeleccion;
 		private String nombrep;
 		private int precioVenta;
@@ -34,19 +37,15 @@ public class Producto {
 			this.numerodeeleccion = numerodeeleccion;
 			this.nombrep = nombrep;
 			this.precioVenta = precioVenta;
-
+			  ingredientes = new ArrayList<Ingrediente>();
 		}
 	
-
-
-	public void modificarProducto() {
-	
-		
-		
-		//recibe numerodeelccion y numerodeespecialidad
-		//if numeroespecialidad == 10 -> imprima combo -> seleccione el producto a modificar y mande entero
-		//else if (numerodeeleccion >= 21 && <=26 -> entonces mande string y entero
-		
+	public List<Ingrediente> getIngredientes() {
+	    return ingredientes;
+	}
+	public String getPrecioIngrediente(int opcion) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

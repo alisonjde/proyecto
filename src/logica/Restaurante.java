@@ -69,10 +69,9 @@ public class Restaurante {
 
 
 
-	private void ingresarCombo(int numerocombo , String nombrecombo , int preciocombo, int producto1, int producto2,int producto3){
-		
-		Combo combo = new Combo(numerocombo,nombrecombo,preciocombo,producto1,producto2,producto3);
-		this.combos.add(combo);	
+	private void ingresarCombo(int numeroCombo, String nombreCombo, int precioCombo, int producto1, int producto2, int producto3) {
+	    Combo combo = new Combo(numeroCombo, nombreCombo, precioCombo, producto1, producto2, producto3);
+	    this.combos.add(combo);
 	}
 
 	public void agregarCombo(Combo combo) {
@@ -87,8 +86,8 @@ public class Restaurante {
 	        Restaurante restaurante = new Restaurante();
 
 	        // Agrega algunos combos de ejemplo
-	        Combo combo1 = new Combo(1, "Combo Golden", 30000, 23, 26, 29);
-	        Combo combo2 = new Combo(2, "Combo Silver", 22000, 25, 28, 25);
+	        Combo combo1 = new Combo(11, "Combo Golden", 30000, 23, 26, 29);
+	        Combo combo2 = new Combo(12, "Combo Silver", 22000, 25, 28, 25);
 	        restaurante.agregarCombo(combo1);
 	        restaurante.agregarCombo(combo2);
 
@@ -134,6 +133,7 @@ public class Restaurante {
 
 	
 	
+	@SuppressWarnings("static-access")
 	private Ingrediente buscarIngrediente(int numeroIngrediente) {
 	    for (Ingrediente ingrediente : this.ingredientes) {
 	        if (ingrediente.getNumeroingrediente()  == numeroIngrediente) {
@@ -148,21 +148,36 @@ public class Restaurante {
 		this.cajeros.add(cajero);
 	}
 	public void ingresarFactura(int idCajero, Date fecha, ArrayList<int[]> productosComprados) {
-		Cajero cajero = this.buscarCajero(idCajero);
-		int numero = this.facturas.size() + 1;
-		Factura factura = new Factura(numero, fecha, cajero);
-		for(int[] datos : productosComprados) {
-			Producto producto = this.buscarProducto(datos[0]);
-			Combo combo = this.buscarCombo(datos[0]);
-			factura.adicionarProducto(producto,combo, datos[1]);
+	    Cajero cajero = this.buscarCajero(idCajero);
+	    int numero = this.facturas.size() + 1;
+	    Factura factura = new Factura(numero, fecha, cajero);
+	    
+	    for (int[] datos : productosComprados) {
+	        int productoId = datos[0];
+	        int cantidad = datos[1];
+	        
+	        Producto producto = buscarProducto(productoId);
+	        Combo combo = buscarCombo(productoId); // Buscar combo por el mismo ID
+	        
+	        if (producto != null) {
+	            factura.adicionarProducto(producto, null, cantidad); // Añadir producto a la factura
+	        } else if (combo != null) {
+	            factura.adicionarProducto(null, combo, cantidad); // Añadir combo a la factura
+	        } else {
+	            // Manejar el caso en el que ni el producto ni el combo sean encontrados
+	            System.out.println("Producto o combo no encontrado para el ID: " + productoId);
+	        }
+	    }
+	    
+	    factura.calcularTotal();
+	    this.facturas.add(factura);
+	}		
+	
 		
-		}
-		factura.calcularTotal();
-		this.facturas.add(factura);
-	}
+	
 	
 //////////////////////
-	private Producto buscarProducto(int idProducto) {
+	public Producto buscarProducto(int idProducto) {
 	    for (Producto producto : this.productos) {
 	        if (producto.getNumeroDeEleccion() == idProducto) {
 	            return producto; // Producto encontrado
@@ -200,77 +215,99 @@ public class Restaurante {
 		return null;
 	}
 
-	public void imprimirFacturas(ArrayList<int[]> productosPedidos, ArrayList<int[]> combosPedidos) {
-	    for (Factura factura : this.facturas) {
-	        System.out.println("-------");
-	        System.out.println(factura.getNumero() + " FECHA: " + factura.getFecha() + "\n" + " VALOR TOTAL: " + factura.getValorTotal() + "\n" + " NOMBRE CAJERO: " + factura.getCajero().getNombre());
-	        for (FacturaProducto facturaProducto : factura.getFacturaProductos()) {
-	            System.out.println(" PEDIDO: " + facturaProducto.getProducto().getNombrep() + "\n" + " CANTIDAD: " + facturaProducto.getCantidad() + "\n" + " PRECIO UND: " + facturaProducto.getPrecio());
-	        }
-	    }
+	public void imprimirFacturas() {
+		for(Factura factura : this.facturas) {
+			System.out.println("-------");
+			System.out.println(factura.getNumero() + " FECHA: " + factura.getFecha()+ "\n" +  " VALOR TOTAL: "+ factura.getValorTotal() + "\n" + " NOMBRE CAJERO: "+ factura.getCajero().getNombre());
+			for(FacturaProducto facturaProducto : factura.getFacturaProductos()) {
+				System.out.println(" PEDIDO: " +facturaProducto.getProducto().getNombrep()+ "\n"  + " CANTIDAD: " + facturaProducto.getPrecio() + "\n" + " PRECIO UND: " + facturaProducto.getCantidad());
+			}
+		}
+
 	}
-
-
+	
 	
 	public void modificarProducto() {
-	
-		Scanner sc = new Scanner(System.in);
-		int opi;
-	    System.out.println("¿Desea modificar el producto? (1. Si /2. No): ");
-	    String respuesta = sc.nextLine().toLowerCase();
+		
+		try (Scanner sc = new Scanner(System.in)) {
+			int opi;
+			System.out.println("¿Desea modificar el producto? (1. Si /2. No): ");
+			String respuesta = sc.nextLine().toLowerCase();
 
-	    if (respuesta.equals("1")) {
-	        System.out.println("Por favor, ingrese el número de elección del producto que desea modificar: ");
-	        int numeroEleccion = sc.nextInt();
-	        if(numeroEleccion == 12 ||numeroEleccion == 11 ||numeroEleccion == 24 || numeroEleccion == 25 || numeroEleccion == 26 || numeroEleccion == 27 || numeroEleccion == 28 || numeroEleccion == 29 || numeroEleccion == 30 ) {
-	        	System.out.println("No se pueden modificar este producto");
-	        	return;
-	        }
-	        Producto productoAModificar = buscarProducto(numeroEleccion);
+			if (respuesta.equals("1")) {
+			    System.out.println("Por favor, ingrese el número de elección del producto que desea modificar: ");
+			    int numeroEleccion = sc.nextInt();
+			    if(numeroEleccion == 12 ||numeroEleccion == 11 ||numeroEleccion == 24 || numeroEleccion == 25 || numeroEleccion == 26 || numeroEleccion == 27 || numeroEleccion == 28 || numeroEleccion == 29 || numeroEleccion == 30 ) {
+			    	System.out.println("No se pueden modificar este producto");
+			    	return;
+			    }
+			    Producto productoAModificar = buscarProducto(numeroEleccion);
 
-	        if (productoAModificar != null) {
-	            System.out.println("Producto actual: " + productoAModificar.getNombrep());
-	            System.out.println("¿Desea agregar o quitar ingredientes? (1. Agregrar / 2. Quitar): ");
-	            String accion = sc.next().toLowerCase();
+			    if (productoAModificar != null) {
+			        System.out.println("Producto actual: " + productoAModificar.getNombrep());
+			        System.out.println("¿Desea agregar o quitar ingredientes? (1. Agregrar / 2. Quitar): ");
+			        String accion = sc.next().toLowerCase();
 
-	            if (accion.equals("1")) {
-	                // Lógica para agregar ingredientes al producto
-	                System.out.println("Ingrese el número del ingrediente que desea agregar:\n "
-	    					+ "1. Carne -- Precio 1000 \n"
-	    					+ "2. Queso -- Precio 1000\n"
-	    					+ "3. Tocineta -- Precio 1000\n"
-	    					+ "4. Cebolla -- Precio 500\n"
-	    			        + "5. Lechuga -- Precio 800\n"
-	    			        + "6. Huevo -- Precio 1000\n");
-	                opi = sc.nextInt();
-	                if(opi == 1) {
-	                	System.out.println("Ingrediente Agregado");
-	                	System.out.println("Precio extra = +1000");
-	                }else if(opi == 2) {
-	                	System.out.println("Ingrediente Agregado");
-	                	System.out.println("Precio extra = +1000");
-	                }else if(opi == 3) {
-	                	System.out.println("Ingrediente Agregado");
-	                	System.out.println("Precio extra = +1000");
-	                }else if(opi == 4) {
-	                	System.out.println("Ingrediente Agregado");
-	                	System.out.println("Precio extra = +500");
-	                }else if(opi == 5) {
-	                	System.out.println("Ingrediente Agregado");
-	                	System.out.println("Precio extra = +800");
-	                }else if(opi == 6) {
-	                	System.out.println("Ingrediente Agregado");
-	                	System.out.println("Precio extra = +1000");
-	                }
-	                }
-	}
-	}
+			        if (accion.equals("1")) {
+			        	
+			        	menuAgregarIngredientes();
+			        	
+			            opi = sc.nextInt();
+			           
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            }else if(accion.equals("2")){
+			            	menuQuitarIngredientes();
+			            	
+			                opi = sc.nextInt();
+			              
+			          }
+       }
+      }
+     }
 	}
 	
-	public void mostrarListaCombos() {
-		// TODO Auto-generated method stub
+	public void imprimirMenu() {
+		for(Producto producto : this.productos) {
+				System.out.println("Nombre: " + producto.getNombrep());
+				System.out.println("Precio Venta: " + producto.getPrecioVenta());
+				System.out.println("-----------");
+			}
+		}
+		
+
+		
+	
+
+
+	public void menuAgregarIngredientes() {
+		for(Ingrediente ingrediente : this.ingredientes) {
+			    System.out.println("Opcion: "+ ingrediente.getNumeroingrediente());
+				System.out.println("Ingrediente: " + ingrediente.getNombreingrediente());
+				System.out.println("Precio Venta: " + ingrediente. getPrecioingrediente());
+				System.out.println("-----------");
+			}
+		}
+		
+	public void menuQuitarIngredientes() {
+		for(Ingrediente ingrediente : this.ingredientes) {
+			    System.out.println("Opcion: "+ ingrediente.getNumeroingrediente());
+				System.out.println("Ingrediente: " + ingrediente.getNombreingrediente());
+				System.out.println("-----------");
+			}
+		}
 		
 	}
 
 	
-}
+
+

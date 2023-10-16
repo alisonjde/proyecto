@@ -59,7 +59,6 @@ public class Combo {
 		this.producto1 = producto1;
 		this.producto2 = producto2;
 		this.producto3 = producto3;
-		
 	}
 	
 	public void modificarCombo() {
@@ -85,7 +84,12 @@ public class Combo {
 		
 	}
 	public Integer[] getProductosCombo() {
-		// TODO Auto-generated method stub
+	    // Supongamos que tienes un atributo llamado productosCombo en la clase Combo
+	    // que almacena los IDs de los productos que componen el combo.
+	    return this.getProductosCombo();
+	}
+	public String getNombreingrediente() {
+		
 		return null;
 	}	
 }

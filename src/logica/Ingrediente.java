@@ -35,6 +35,8 @@ public class Ingrediente {
 		this.precioingrediente = precioingrediente;
 		
 	}
+
+
 	
 }
 
