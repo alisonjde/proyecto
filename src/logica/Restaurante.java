@@ -283,11 +283,6 @@ public class Restaurante {
 				System.out.println("-----------");
 			}
 		}
-		
-
-		
-	
-
 
 	public void menuAgregarIngredientes() {
 		for(Ingrediente ingrediente : this.ingredientes) {

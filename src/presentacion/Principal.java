@@ -45,9 +45,7 @@ public class Principal {
 			        + "5. Imprimir Menu\n"
 			        + "6. leer archivos\n"
 			        + "7. modificar producto\n"
-		           	+ "8. Ver combos\n"
-		         	+ "9. Ver pedidos individuales\n"
-			        + "10. ingredientes ");
+			        + "8. ingredientes ");
 			op = sc.nextInt();
 			if(op == 1) {
 				System.out.println("Digite numero de eleccion: ");
@@ -106,7 +104,7 @@ public class Principal {
                 this.restaurante.leerArchivos();
             } else if (op == 7) {
                 this.restaurante.modificarProducto();
-            }else if (op == 10) {
+            }else if (op == 8) {
             	this.restaurante.menuAgregarIngredientes();
             }
         } while (op != 0);
