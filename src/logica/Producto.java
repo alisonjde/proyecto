@@ -47,6 +47,21 @@ public class Producto {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public void agregarIngrediente(Ingrediente ingrediente) {
+	    if (ingredientes == null) {
+	        ingredientes = new ArrayList<>();
+	    }
+	    ingredientes.add(ingrediente);
+	}
+	public void quitarIngrediente(Ingrediente ingrediente) {
+	    if (ingredientes != null) {
+	        ingredientes.remove(ingrediente);
+	    }
+	}
+	public String calcularPrecioTotal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 
 

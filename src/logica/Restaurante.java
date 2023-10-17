@@ -82,38 +82,6 @@ public class Restaurante {
 	        return combos;
 	    }
 
-	 public static void main(String[] args) {
-	        Restaurante restaurante = new Restaurante();
-
-	        // Agrega algunos combos de ejemplo
-	        Combo combo1 = new Combo(11, "Combo Golden", 30000, 23, 26, 29);
-	        Combo combo2 = new Combo(12, "Combo Silver", 22000, 25, 28, 25);
-	        restaurante.agregarCombo(combo1);
-	        restaurante.agregarCombo(combo2);
-
-	        // Muestra la lista de combos al usuario
-	        ArrayList<Combo> listaCombos = restaurante.getCombos();
-
-	        System.out.println("Lista de Combos Disponibles:");
-	        for (Combo combo : listaCombos) {
-	            System.out.println("Número: " + combo.getNumerocombo());
-	            System.out.println("Nombre: " + combo.getNombrecombo());
-	            System.out.println("Contiene");
-	            
-	            System.out.println("Precio: " + combo.getPreciocombo());
-	            System.out.println("--------------");
-	        }
-
-	        // Aquí puedes continuar con otras partes de tu aplicación
-	    }
-	
-
-
-
-
-	
-	
-
 	private void ingresarProducto(int numerodeelccion, String nombrep, int precioVenta) {
 	
 		Producto producto = new Producto(numerodeelccion,nombrep,precioVenta);
@@ -121,19 +89,6 @@ public class Restaurante {
 	}
 
 	
-
-
-
-
-
-
-
-
-
-
-	
-	
-	@SuppressWarnings("static-access")
 	private Ingrediente buscarIngrediente(int numeroIngrediente) {
 	    for (Ingrediente ingrediente : this.ingredientes) {
 	        if (ingrediente.getNumeroingrediente()  == numeroIngrediente) {
@@ -173,10 +128,7 @@ public class Restaurante {
 	    this.facturas.add(factura);
 	}		
 	
-		
 	
-	
-//////////////////////
 	public Producto buscarProducto(int idProducto) {
 	    for (Producto producto : this.productos) {
 	        if (producto.getNumeroDeEleccion() == idProducto) {
@@ -185,6 +137,16 @@ public class Restaurante {
 	    }
 	    return null; // Producto no encontrado
 	}
+	
+	public Ingrediente buscarIngrediente1(int idIngrediente) {
+	    for (Ingrediente ingrediente : this.ingredientes) {
+	        if (ingrediente.getNumeroingrediente() == idIngrediente) {
+	            return ingrediente; 
+	        }
+	    }
+	    return null; 
+	}
+	
 	private Combo buscarCombo(int idCombo) {
 	    for (Combo combo : this.combos) {
 	        if (combo.getNumerocombo() == idCombo) {
@@ -194,18 +156,6 @@ public class Restaurante {
 	    return null; // Producto no encontrado
 	}
 
-
-
-////////////////////////////////
-
-
-
-
-
-
-
-	
-	
 	private Cajero buscarCajero(int idCajero) {
 		for(Cajero cajero : this.cajeros) {
 			if(cajero.getId() == idCajero) {
@@ -250,30 +200,26 @@ public class Restaurante {
 
 			        if (accion.equals("1")) {
 			        	
+			        	System.out.println("Que ingrediente desea Agregar: \n");
 			        	menuAgregarIngredientes();
+			        	int numeroingrediente = sc.nextInt();
+			        	 Ingrediente ingrediente = buscarIngrediente(numeroingrediente);
+
+						    if (ingrediente != null) {
+						        System.out.println("Producto actual: " + ingrediente.getNombreingrediente());
 			        	
-			            opi = sc.nextInt();
-			           
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
+						        System.out.println("precio adicional: + " +ingrediente.getPrecioingrediente());
+						        
+						    }   
 			            }else if(accion.equals("2")){
-			            	menuQuitarIngredientes();
 			            	
-			                opi = sc.nextInt();
-			              
-			          }
+			            
        }
+			        
       }
      }
+	}
+		
 	}
 	
 	public void imprimirMenu() {

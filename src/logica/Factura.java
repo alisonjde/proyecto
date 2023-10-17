@@ -65,6 +65,8 @@ public class Factura {
 		this.valorTotal = total;
 		 // + modificar pedido
 	}
+	
+	
 	public void adicionarProducto(Producto producto, Combo combo, int cantidad) {
 	    if (producto != null) {
 	        FacturaProducto facturaProducto = new FacturaProducto(producto.getPrecioVenta(), cantidad, combo, producto);

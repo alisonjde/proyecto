@@ -110,7 +110,7 @@ public class Principal {
         } while (op != 0);
 
         sc.close();
-        this.restaurante.imprimirFacturas();
+        
     }
 
  
