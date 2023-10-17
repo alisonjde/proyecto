@@ -1,6 +1,5 @@
 package logica;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Combo {
@@ -79,19 +78,7 @@ public class Combo {
 		sc.close();
 	
 	}
-	public void setProductosCombo(@SuppressWarnings("rawtypes") ArrayList arrayList) {
-		// TODO Auto-generated method stub
-		
-	}
-	public Integer[] getProductosCombo() {
-	    // Supongamos que tienes un atributo llamado productosCombo en la clase Combo
-	    // que almacena los IDs de los productos que componen el combo.
-	    return this.getProductosCombo();
-	}
-	public String getNombreingrediente() {
-		
-		return null;
-	}	
+	
 }
 	
 

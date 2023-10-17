@@ -21,8 +21,7 @@ public class Restaurante {
 		 this.combos = new ArrayList<Combo>();
 		    this.ingredientes = new ArrayList<Ingrediente>();
 		    this.productos = new ArrayList<Producto>();
-		
-		    
+			    
 	}
 
 	public void leerArchivos() {
@@ -57,38 +56,6 @@ public class Restaurante {
 		this.ingredientes.add(ingrediente);
 	}
 	
-
-
-
-
-
-
-
-
-
-
-
-
-	private void ingresarCombo(int numeroCombo, String nombreCombo, int precioCombo, int producto1, int producto2, int producto3) {
-	    Combo combo = new Combo(numeroCombo, nombreCombo, precioCombo, producto1, producto2, producto3);
-	    this.combos.add(combo);
-	}
-
-	public void agregarCombo(Combo combo) {
-        combos.add(combo);
-	}
-
-	 public ArrayList<Combo> getCombos() {
-	        return combos;
-	    }
-
-	private void ingresarProducto(int numerodeelccion, String nombrep, int precioVenta) {
-	
-		Producto producto = new Producto(numerodeelccion,nombrep,precioVenta);
-		this.productos.add(producto);	
-	}
-
-	
 	private Ingrediente buscarIngrediente(int numeroIngrediente) {
 	    for (Ingrediente ingrediente : this.ingredientes) {
 	        if (ingrediente.getNumeroingrediente()  == numeroIngrediente) {
@@ -97,10 +64,49 @@ public class Restaurante {
 	    }
 	    return null; // Ingrediente no encontrado
 	}
+	
+	
+	private void ingresarCombo(int numeroCombo, String nombreCombo, int precioCombo, int producto1, int producto2, int producto3) {
+	    Combo combo = new Combo(numeroCombo, nombreCombo, precioCombo, producto1, producto2, producto3);
+	    this.combos.add(combo);
+	}
+	
+	private Combo buscarCombo(int idCombo) {
+	    for (Combo combo : this.combos) {
+	        if (combo.getNumerocombo() == idCombo) {
+	            return combo; // Producto encontrado
+	        }
+	    }
+	    return null; // Producto no encontrado
+	}
+
+	private void ingresarProducto(int numerodeelccion, String nombrep, int precioVenta) {
+	
+		Producto producto = new Producto(numerodeelccion,nombrep,precioVenta);
+		this.productos.add(producto);	
+	}
+	
+	public Producto buscarProducto(int idProducto) {
+	    for (Producto producto : this.productos) {
+	        if (producto.getNumeroDeEleccion() == idProducto) {
+	            return producto; // Producto encontrado
+	        }
+	    }
+	    return null; // Producto no encontrado
+	}
 
 	public void ingresarCajero(int id, String nombre, String apellido) {
 		Cajero cajero = new Cajero(id, nombre, apellido);
 		this.cajeros.add(cajero);
+	}
+	
+	private Cajero buscarCajero(int idCajero) {
+		for(Cajero cajero : this.cajeros) {
+			if(cajero.getId() == idCajero) {
+				return cajero;
+			}
+		}
+		return null;
 	}
 	public void ingresarFactura(int idCajero, Date fecha, ArrayList<int[]> productosComprados) {
 	    Cajero cajero = this.buscarCajero(idCajero);
@@ -127,56 +133,17 @@ public class Restaurante {
 	    factura.calcularTotal();
 	    this.facturas.add(factura);
 	}		
-	
-	
-	public Producto buscarProducto(int idProducto) {
-	    for (Producto producto : this.productos) {
-	        if (producto.getNumeroDeEleccion() == idProducto) {
-	            return producto; // Producto encontrado
-	        }
-	    }
-	    return null; // Producto no encontrado
-	}
-	
-	public Ingrediente buscarIngrediente1(int idIngrediente) {
-	    for (Ingrediente ingrediente : this.ingredientes) {
-	        if (ingrediente.getNumeroingrediente() == idIngrediente) {
-	            return ingrediente; 
-	        }
-	    }
-	    return null; 
-	}
-	
-	private Combo buscarCombo(int idCombo) {
-	    for (Combo combo : this.combos) {
-	        if (combo.getNumerocombo() == idCombo) {
-	            return combo; // Producto encontrado
-	        }
-	    }
-	    return null; // Producto no encontrado
-	}
-
-	private Cajero buscarCajero(int idCajero) {
-		for(Cajero cajero : this.cajeros) {
-			if(cajero.getId() == idCajero) {
-				return cajero;
-			}
-		}
-		return null;
-	}
 
 	public void imprimirFacturas() {
 		for(Factura factura : this.facturas) {
 			System.out.println("-------");
-			System.out.println(factura.getNumero() + " FECHA: " + factura.getFecha()+ "\n" +  " VALOR TOTAL: "+ factura.getValorTotal() + "\n" + " NOMBRE CAJERO: "+ factura.getCajero().getNombre());
+			System.out.println( "#"+factura.getNumero() + "\n" + " FECHA: " + factura.getFecha()+ "\n" +  " VALOR TOTAL: "+ factura.getValorTotal() + "\n" + " NOMBRE CAJERO: "+ factura.getCajero().getNombre()+ " " + factura.getCajero().getApellido());
 			for(FacturaProducto facturaProducto : factura.getFacturaProductos()) {
 				System.out.println(" PEDIDO: " +facturaProducto.getProducto().getNombrep()+ "\n"  + " CANTIDAD: " + facturaProducto.getPrecio() + "\n" + " PRECIO UND: " + facturaProducto.getCantidad());
 			}
 		}
 
 	}
-	
-	
 	public void modificarProducto() {
 		
 		try (Scanner sc = new Scanner(System.in)) {
@@ -206,14 +173,23 @@ public class Restaurante {
 			        	 Ingrediente ingrediente = buscarIngrediente(numeroingrediente);
 
 						    if (ingrediente != null) {
-						        System.out.println("Producto actual: " + ingrediente.getNombreingrediente());
+						        System.out.println("Ingrediente Agregado: " + ingrediente.getNombreingrediente());
 			        	
 						        System.out.println("precio adicional: + " +ingrediente.getPrecioingrediente());
 						        
 						    }   
 			            }else if(accion.equals("2")){
 			            	
-			            
+			            	System.out.println("Que ingrediente desea eliminar");
+			            	menuQuitarIngredientes();
+			            	
+			            	int numeroingrediente = sc.nextInt();
+				        	 Ingrediente ingrediente = buscarIngrediente(numeroingrediente);
+
+							    if (ingrediente != null) {
+							        System.out.println("Ingrediente eliminado: " + ingrediente.getNombreingrediente());
+				        						        
+							    }		            
        }
 			        
       }
@@ -221,6 +197,30 @@ public class Restaurante {
 	}
 		
 	}
+	
+public void modificarCombo() {
+		
+		try (Scanner sc = new Scanner(System.in)) {
+			int opcc;
+			System.out.println("¿Desea modificar el Combo? (1. Si /2. No): ");
+			String respuesta = sc.nextLine().toLowerCase();
+
+			if (respuesta.equals("1")) {
+			    System.out.println("Por favor, ingrese el número de combo que desea modificar: ");
+			    int numeroEleccion = sc.nextInt();
+	
+			    int numerocombo = sc.nextInt();
+			    if(numeroEleccion == 21 ||numeroEleccion == 22 ||numeroEleccion == 23 ||numeroEleccion == 24 || numeroEleccion == 25 || numeroEleccion == 26 || numeroEleccion == 27 || numeroEleccion == 28 || numeroEleccion == 29 || numeroEleccion == 30 ) {
+			    	System.out.println("No se pueden productos, solo combos");
+			    	return;
+			    }			    
+			    
+			}	    
+		}
+}
+			    
+			    
+			    
 	
 	public void imprimirMenu() {
 		for(Producto producto : this.productos) {
@@ -248,7 +248,3 @@ public class Restaurante {
 		}
 		
 	}
-
-	
-
-

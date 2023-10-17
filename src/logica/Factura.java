@@ -52,6 +52,7 @@ public class Factura {
 	}
 	public Factura(int numero, Date fecha, Cajero cajero) {
 		super();
+		this.numero =numero;
 		this.fecha = fecha;
 		this.cajero = cajero;
 		this.facturaProductos = new ArrayList<FacturaProducto>();

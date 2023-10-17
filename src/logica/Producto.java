@@ -58,10 +58,7 @@ public class Producto {
 	        ingredientes.remove(ingrediente);
 	    }
 	}
-	public String calcularPrecioTotal() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }
 
 
