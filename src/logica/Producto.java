@@ -33,6 +33,10 @@ public class Producto {
 			this.precioVenta = precioVenta;
 		}
 		
+//se inicializa el atributo ingredientes como una nueva lista de ingredientes (un ArrayList<Ingrediente>). 
+//Esto se hace para asegurarse de que el producto tenga una lista de ingredientes a
+		//la que se le pueden agregar ingredientes posteriormente.
+		
 		public Producto(int numerodeeleccion, String nombrep, int precioVenta) {
 			this.numerodeeleccion = numerodeeleccion;
 			this.nombrep = nombrep;
@@ -43,10 +47,7 @@ public class Producto {
 	public List<Ingrediente> getIngredientes() {
 	    return ingredientes;
 	}
-	public String getPrecioIngrediente(int opcion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	public void agregarIngrediente(Ingrediente ingrediente) {
 	    if (ingredientes == null) {
 	        ingredientes = new ArrayList<>();

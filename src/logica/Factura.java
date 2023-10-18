@@ -67,6 +67,11 @@ public class Factura {
 		
 	}
 	
+	//Este método Recibe un objeto de la clase Producto,
+	//un objeto de la clase Combo y la cantidad de unidades del producto o combo que se están agregando a la factura.
+	//Si se agrega un producto, se crea un objeto de la clase FacturaProducto para representar ese producto 
+	// y se agrega a la lista facturaProductos. 
+	//Si el producto no se encuentra, se muestra un mensaje de error.
 	
 	public void adicionarProducto(Producto producto, Combo combo, int cantidad) {
 	    if (producto != null) {
