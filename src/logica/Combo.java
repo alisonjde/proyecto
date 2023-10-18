@@ -7,9 +7,9 @@ public class Combo {
 	private int numerocombo;
 	private String nombrecombo;
 	private int preciocombo;
-	private int producto1;
-	private int producto2;
-	private int producto3;
+	private String producto1;
+	private String producto2;
+	private String producto3;
 
 	
 	
@@ -32,26 +32,26 @@ public class Combo {
 	public void setPreciocombo(int preciocombo) {
 		this.preciocombo = preciocombo;
 	}
-	public int getProducto1() {
+	public String getProducto1() {
 		return producto1;
 	}
-	public void setProducto1(int producto1) {
+	public void setProducto1(String producto1) {
 		this.producto1 = producto1;
 	}
-	public int getProducto2() {
+	public String getProducto2() {
 		return producto2;
 	}
-	public void setProducto2(int producto2) {
+	public void setProducto2(String producto2) {
 		this.producto2 = producto2;
 	}
-	public int getProducto3() {
+	public String getProducto3() {
 		return producto3;
 	}
-	public void setProducto3(int producto3) {
+	public void setProducto3(String producto3) {
 		this.producto3 = producto3;
 	}
 	
-	public Combo(int numerocombo, String nombrecombo, int preciocombo, int producto1, int producto2,int producto3) {
+	public Combo(int numerocombo, String nombrecombo, int preciocombo, String producto1, String producto2,String producto3) {
 		this.numerocombo = numerocombo;
 		this.nombrecombo = nombrecombo;
 		this.preciocombo = preciocombo;

@@ -2,6 +2,8 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.NoSuchElementException;
+
 import persistencia.Archivo;
 
 import java.util.Scanner;
@@ -39,7 +41,7 @@ public class Restaurante {
 		lineas = Archivo.leerArchivo("combo");
 		for(String linea : lineas) {
 			String datos[] = linea.split(";");
-			this.ingresarCombo(Integer.parseInt(datos[0]),datos[1],Integer.parseInt(datos[2]),Integer.parseInt (datos[3]),Integer.parseInt(datos[4]),Integer.parseInt (datos[5]));
+			this.ingresarCombo(Integer.parseInt(datos[0]),datos[1],Integer.parseInt(datos[2]),(datos[3]),(datos[4]),(datos[5]));
 		}
 		lineas = Archivo.leerArchivo("ingrediente");
 		for(String linea : lineas) {
@@ -51,7 +53,6 @@ public class Restaurante {
 	}
 
 	private void ingresarIngrediente(int numeroingrediente, String nombreingrediente, int precioingrediente) {
-		// TODO Auto-generated method stub
 		Ingrediente ingrediente = new Ingrediente(numeroingrediente,nombreingrediente, precioingrediente);
 		this.ingredientes.add(ingrediente);
 	}
@@ -66,7 +67,7 @@ public class Restaurante {
 	}
 	
 	
-	private void ingresarCombo(int numeroCombo, String nombreCombo, int precioCombo, int producto1, int producto2, int producto3) {
+	private void ingresarCombo(int numeroCombo, String nombreCombo, int precioCombo, String producto1, String producto2, String producto3) {
 	    Combo combo = new Combo(numeroCombo, nombreCombo, precioCombo, producto1, producto2, producto3);
 	    this.combos.add(combo);
 	}
@@ -145,58 +146,67 @@ public class Restaurante {
 
 	}
 	public void modificarProducto() {
-		
-		try (Scanner sc = new Scanner(System.in)) {
-			int opi;
-			System.out.println("¿Desea modificar el producto? (1. Si /2. No): ");
-			String respuesta = sc.nextLine().toLowerCase();
+	    try (Scanner sc = new Scanner(System.in)) {
+	        int opi;
+	        System.out.println("¿Desea modificar el producto? (1. Si /2. No): ");
+	        String respuesta = sc.nextLine().toLowerCase();
 
-			if (respuesta.equals("1")) {
-			    System.out.println("Por favor, ingrese el número de elección del producto que desea modificar: ");
-			    int numeroEleccion = sc.nextInt();
-			    if(numeroEleccion == 12 ||numeroEleccion == 11 ||numeroEleccion == 24 || numeroEleccion == 25 || numeroEleccion == 26 || numeroEleccion == 27 || numeroEleccion == 28 || numeroEleccion == 29 || numeroEleccion == 30 ) {
-			    	System.out.println("No se pueden modificar este producto");
-			    	return;
-			    }
-			    Producto productoAModificar = buscarProducto(numeroEleccion);
+	        if (respuesta.equals("1")) {
+	            int numeroEleccion;
+	            System.out.println("Por favor, ingrese el número de elección del producto que desea modificar: ");
 
-			    if (productoAModificar != null) {
-			        System.out.println("Producto actual: " + productoAModificar.getNombrep());
-			        System.out.println("¿Desea agregar o quitar ingredientes? (1. Agregrar / 2. Quitar): ");
-			        String accion = sc.next().toLowerCase();
+	            if (sc.hasNextInt()) { // Comprobar si se ingresó un número
+	                numeroEleccion = sc.nextInt();
 
-			        if (accion.equals("1")) {
-			        	
-			        	System.out.println("Que ingrediente desea Agregar: \n");
-			        	menuAgregarIngredientes();
-			        	int numeroingrediente = sc.nextInt();
-			        	 Ingrediente ingrediente = buscarIngrediente(numeroingrediente);
+	                if (numeroEleccion == 12 || numeroEleccion == 11 || numeroEleccion == 24 || numeroEleccion == 25 || numeroEleccion == 26 || numeroEleccion == 27 || numeroEleccion == 28 || numeroEleccion == 29 || numeroEleccion == 30) {
+	                    System.out.println("No se puede modificar este producto");
+	                    return;
+	                }
 
-						    if (ingrediente != null) {
-						        System.out.println("Ingrediente Agregado: " + ingrediente.getNombreingrediente());
-			        	
-						        System.out.println("precio adicional: + " +ingrediente.getPrecioingrediente());
-						        
-						    }   
-			            }else if(accion.equals("2")){
-			            	
-			            	System.out.println("Que ingrediente desea eliminar");
-			            	menuQuitarIngredientes();
-			            	
-			            	int numeroingrediente = sc.nextInt();
-				        	 Ingrediente ingrediente = buscarIngrediente(numeroingrediente);
+	                Producto productoAModificar = buscarProducto(numeroEleccion);
 
-							    if (ingrediente != null) {
-							        System.out.println("Ingrediente eliminado: " + ingrediente.getNombreingrediente());
-				        						        
-							    }		            
-       }
-			        
-      }
-     }
+	                if (productoAModificar != null) {
+	                    System.out.println("Producto actual: " + productoAModificar.getNombrep());
+	                    System.out.println("¿Desea agregar o quitar ingredientes? (1. Agregar / 2. Quitar): ");
+	                    int accion;
+
+	                    if (sc.hasNextInt()) { // Comprobar si se ingresó un número
+	                        accion = sc.nextInt();
+
+	                        if (accion == 1) {
+	                            System.out.println("Qué ingrediente desea agregar: ");
+	                            menuAgregarIngredientes();
+	                            int numeroIngrediente = sc.nextInt();
+
+	                            Ingrediente ingrediente = buscarIngrediente(numeroIngrediente);
+
+	                            if (ingrediente != null) {
+	                                System.out.println("Ingrediente agregado: " + ingrediente.getNombreingrediente());
+	                                System.out.println("Precio adicional: + " + ingrediente.getPrecioingrediente());
+	                            }
+	                        } else if (accion == 2) {
+	                            System.out.println("Qué ingrediente desea eliminar: ");
+	                            menuQuitarIngredientes();
+	                            int numeroIngrediente = sc.nextInt();
+
+	                            Ingrediente ingrediente = buscarIngrediente(numeroIngrediente);
+
+	                            if (ingrediente != null) {
+	                                System.out.println("Ingrediente eliminado: " + ingrediente.getNombreingrediente());
+	                            }
+	                        }
+	                    } else {
+	                        System.out.println("Entrada no válida. Debe ingresar 1 para agregar ingredientes o 2 para quitar ingredientes.");
+	                    }
+	                }
+	            } else {
+	                System.out.println("Entrada no válida. Debe ingresar el número de elección del producto.");
+	            }
+	        }
+	    }
 	}
-		
-	}
+	
+	
 	
 public void modificarCombo() {
 		
@@ -229,12 +239,20 @@ public void modificarCombo() {
 				System.out.println("-----------");
 			}
 		}
-
+    public void imprimirCombos() {
+    	for(Combo combo : this.combos) {
+    		System.out.println("Nombre: " + combo.getNombrecombo());
+    		System.out.println("Contiene: " + combo.getProducto1()+ " + " + combo.getProducto2()+ " + " +combo.getProducto3());
+			System.out.println("Precio Venta: " + combo.getPreciocombo());
+			System.out.println("-----------");
+    	}
+    }
+    
 	public void menuAgregarIngredientes() {
 		for(Ingrediente ingrediente : this.ingredientes) {
 			    System.out.println("Opcion: "+ ingrediente.getNumeroingrediente());
 				System.out.println("Ingrediente: " + ingrediente.getNombreingrediente());
-				System.out.println("Precio Venta: " + ingrediente. getPrecioingrediente());
+				System.out.println("Precio Venta: " + ingrediente.getPrecioingrediente());
 				System.out.println("-----------");
 			}
 		}
