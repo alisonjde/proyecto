@@ -60,10 +60,10 @@ public class Restaurante {
 	private Ingrediente buscarIngrediente(int numeroIngrediente) {
 	    for (Ingrediente ingrediente : this.ingredientes) {
 	        if (ingrediente.getNumeroingrediente()  == numeroIngrediente) {
-	            return ingrediente; // Ingrediente encontrado
+	            return ingrediente; 
 	        }
 	    }
-	    return null; // Ingrediente no encontrado
+	    return null; 
 	}
 	
 	
@@ -75,10 +75,10 @@ public class Restaurante {
 	private Combo buscarCombo(int idCombo) {
 	    for (Combo combo : this.combos) {
 	        if (combo.getNumerocombo() == idCombo) {
-	            return combo; // Producto encontrado
+	            return combo; 
 	        }
 	    }
-	    return null; // Producto no encontrado
+	    return null; 
 	}
 
 	private void ingresarProducto(int numerodeelccion, String nombrep, int precioVenta) {
@@ -90,10 +90,10 @@ public class Restaurante {
 	public Producto buscarProducto(int idProducto) {
 	    for (Producto producto : this.productos) {
 	        if (producto.getNumeroDeEleccion() == idProducto) {
-	            return producto; // Producto encontrado
+	            return producto; 
 	        }
 	    }
-	    return null; // Producto no encontrado
+	    return null; 
 	}
 
 	public void ingresarCajero(int id, String nombre, String apellido) {
@@ -119,14 +119,14 @@ public class Restaurante {
 	        int cantidad = datos[1];
 	        
 	        Producto producto = buscarProducto(productoId);
-	        Combo combo = buscarCombo(productoId); // Buscar combo por el mismo ID
+	        Combo combo = buscarCombo(productoId); // aqui se busca el combo por el mismo id
 	        
 	        if (producto != null) {
-	            factura.adicionarProducto(producto, null, cantidad); // Añadir producto a la factura
+	            factura.adicionarProducto(producto, null, cantidad); // aqui se agrega un producto a la factura
 	        } else if (combo != null) {
-	            factura.adicionarProducto(null, combo, cantidad); // Añadir combo a la factura
+	            factura.adicionarProducto(null, combo, cantidad); // aqui  agrega un combo a la factura
 	        } else {
-	            // Manejar el caso en el que ni el producto ni el combo sean encontrados
+	            
 	            System.out.println("Producto o combo no encontrado para el ID: " + productoId);
 	        }
 	    }
@@ -155,10 +155,11 @@ public class Restaurante {
 	            int numeroEleccion;
 	            System.out.println("Por favor, ingrese el número de elección del producto que desea modificar: ");
 
-	            if (sc.hasNextInt()) { // Comprobar si se ingresó un número
+	            if (sc.hasNextInt()) {
 	                numeroEleccion = sc.nextInt();
 
-	                if (numeroEleccion == 12 || numeroEleccion == 11 || numeroEleccion == 24 || numeroEleccion == 25 || numeroEleccion == 26 || numeroEleccion == 27 || numeroEleccion == 28 || numeroEleccion == 29 || numeroEleccion == 30) {
+	                if (numeroEleccion == 12 || numeroEleccion == 11 || numeroEleccion == 24 || numeroEleccion == 25
+	            || numeroEleccion == 26 || numeroEleccion == 27 || numeroEleccion == 28 || numeroEleccion == 29 || numeroEleccion == 30) {
 	                    System.out.println("No se puede modificar este producto");
 	                    return;
 	                }
@@ -170,7 +171,7 @@ public class Restaurante {
 	                    System.out.println("¿Desea agregar o quitar ingredientes? (1. Agregar / 2. Quitar): ");
 	                    int accion;
 
-	                    if (sc.hasNextInt()) { // Comprobar si se ingresó un número
+	                    if (sc.hasNextInt()) { 
 	                        accion = sc.nextInt();
 
 	                        if (accion == 1) {
@@ -234,6 +235,7 @@ public void modificarCombo() {
 	
 	public void imprimirMenu() {
 		for(Producto producto : this.productos) {
+			    System.out.println("# "+ producto.getNumeroDeEleccion());
 				System.out.println("Nombre: " + producto.getNombrep());
 				System.out.println("Precio Venta: " + producto.getPrecioVenta());
 				System.out.println("-----------");

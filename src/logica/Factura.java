@@ -64,7 +64,7 @@ public class Factura {
 			total += facturaProducto.getPrecio() * facturaProducto.getCantidad() ;
 		}
 		this.valorTotal = total;
-		 // + modificar pedido
+		
 	}
 	
 	
@@ -73,7 +73,7 @@ public class Factura {
 	        FacturaProducto facturaProducto = new FacturaProducto(producto.getPrecioVenta(), cantidad, combo, producto);
 	        this.facturaProductos.add(facturaProducto);
 	    } else {
-	        // Manejar el caso en el que el producto no se encontró
+	
 	        System.out.println("El producto no se encontró.");
 	    }
 	}

@@ -28,6 +28,7 @@ public class Principal {
     }
 
     private void iniciar() {
+    	   this.restaurante.leerArchivos();
         Scanner sc = new Scanner(System.in);
         int op;
         ArrayList<int[]> productosPedidos = new ArrayList<>();
@@ -42,8 +43,9 @@ public class Principal {
                 + "1. Ingresar Factura\n"
                 + "2. Imprimir Facturas\n"
                 + "3. Ver Menú\n"
-                + "4. Leer archivos\n"
+                + "4. Ver Combos\n"
                 + "5. Modificar Producto"
+                
             );
 
             op = sc.nextInt();
@@ -79,13 +81,13 @@ public class Principal {
                 }while (op == 1);
                     	this.restaurante.ingresarFactura(idCajero, fecha, productosComprados);
                 
+                    	
             } else if (op == 2) {
                 this.restaurante.imprimirFacturas();
             } else if (op == 3) {
                 this.restaurante.imprimirMenu();
             } else if (op == 4) {
-            	System.out.println("Archivos Leidos Con Exito");
-                this.restaurante.leerArchivos();
+               this.restaurante.imprimirCombos();
             } else if (op == 5) {
             	this.restaurante.modificarProducto();
             }
